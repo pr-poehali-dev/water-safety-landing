@@ -1,16 +1,18 @@
 import Hero from '@/components/Hero';
-import Advantages from '@/components/Advantages';
-import About from '@/components/About';
-import Certificates from '@/components/Certificates';
+import HowItWorks from '@/components/HowItWorks';
+import AdvantagesSentag from '@/components/AdvantagesSentag';
+import SystemComponents from '@/components/SystemComponents';
+import AboutCompany from '@/components/AboutCompany';
 import Contacts from '@/components/Contacts';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Hero />
-      <Advantages />
-      <About />
-      <Certificates />
+      <HowItWorks />
+      <AdvantagesSentag />
+      <SystemComponents />
+      <AboutCompany />
       <Contacts />
     </div>
   );

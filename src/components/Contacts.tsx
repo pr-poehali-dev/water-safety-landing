@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import SurveyForm from './SurveyForm';
+import NewSurveyForm from './NewSurveyForm';
 
 const Contacts = () => {
   return (
@@ -32,7 +32,7 @@ const Contacts = () => {
                 </TabsList>
                 
                 <TabsContent value="survey" className="mt-0">
-                  <SurveyForm />
+                  <NewSurveyForm />
                 </TabsContent>
                 
                 <TabsContent value="quick" className="mt-0">
@@ -45,28 +45,27 @@ const Contacts = () => {
                     
                     <div className="flex flex-col gap-4">
                       <a 
-                        href="mailto:dimanadym@yandex.ru" 
+                        href="tel:+73452568286" 
+                        className="flex items-center gap-3 p-4 bg-card border border-border rounded-lg hover:border-primary transition-colors"
+                      >
+                        <Icon name="Phone" size={24} className="text-primary" />
+                        <div>
+                          <div className="font-semibold text-foreground">Телефон</div>
+                          <div className="text-sm text-muted-foreground">+7 (3452) 56-82-86</div>
+                        </div>
+                      </a>
+                      
+                      <a 
+                        href="mailto:info@meridian-t.ru" 
                         className="flex items-center gap-3 p-4 bg-card border border-border rounded-lg hover:border-primary transition-colors"
                       >
                         <Icon name="Mail" size={24} className="text-primary" />
                         <div>
                           <div className="font-semibold text-foreground">Email</div>
-                          <div className="text-sm text-muted-foreground">dimanadym@yandex.ru</div>
+                          <div className="text-sm text-muted-foreground">info@meridian-t.ru</div>
                         </div>
                       </a>
-                      
-                      <a 
-                        href="https://t.me/+Jcc9HDH1PphiMzA6" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-4 bg-card border border-border rounded-lg hover:border-primary transition-colors"
-                      >
-                        <Icon name="MessageCircle" size={24} className="text-primary" />
-                        <div>
-                          <div className="font-semibold text-foreground">Telegram</div>
-                          <div className="text-sm text-muted-foreground">Чат поддержки</div>
-                        </div>
-                      </a>
+
                     </div>
                   </div>
                 </TabsContent>
@@ -81,15 +80,26 @@ const Contacts = () => {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <div className="text-sm text-muted-foreground mb-1">Email</div>
-                    <a href="mailto:dimanadym@yandex.ru" className="text-foreground hover:text-primary transition-colors">
-                      dimanadym@yandex.ru
+                    <div className="text-sm text-muted-foreground mb-1">Адрес</div>
+                    <a 
+                      href="https://yandex.ru/maps/-/CDdkzFwo" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-foreground hover:text-primary transition-colors"
+                    >
+                      г. Тюмень, ул. 30 лет Победы, д. 60А, офис 302
                     </a>
                   </div>
                   <div>
-                    <div className="text-sm text-muted-foreground mb-1">Telegram</div>
-                    <a href="https://t.me/+Jcc9HDH1PphiMzA6" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
-                      Чат поддержки
+                    <div className="text-sm text-muted-foreground mb-1">Телефон</div>
+                    <a href="tel:+73452568286" className="text-foreground hover:text-primary transition-colors">
+                      +7 (3452) 56-82-86
+                    </a>
+                  </div>
+                  <div>
+                    <div className="text-sm text-muted-foreground mb-1">Email</div>
+                    <a href="mailto:info@meridian-t.ru" className="text-foreground hover:text-primary transition-colors">
+                      info@meridian-t.ru
                     </a>
                   </div>
                 </div>
