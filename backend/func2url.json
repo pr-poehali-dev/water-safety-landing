@@ -1,3 +1,5 @@
 {
+  "auth": "https://functions.poehali.dev/609ebf0b-5924-4cb2-b9ea-d31ab05a62fd",
+  "admin": "https://functions.poehali.dev/425c04ec-e6c9-42a2-8a10-f79a77ab253e",
   "survey": "https://functions.poehali.dev/2912236f-c361-4954-acab-6c06c74f617b"
 }

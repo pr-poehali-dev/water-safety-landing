@@ -1,0 +1,31 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS returns CORS headers",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "GET content list",
+      "method": "GET",
+      "path": "/?resource=content",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "content": []
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "GET surveys list",
+      "method": "GET",
+      "path": "/?resource=surveys",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "surveys": [],
+        "total": 0
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
