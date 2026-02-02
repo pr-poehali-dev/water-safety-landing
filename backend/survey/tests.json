@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS request returns CORS headers",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedHeaders": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS"
+      }
+    },
+    {
+      "name": "POST step 1 submission",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "step": 1,
+        "data": {
+          "name": "Иван Тестов",
+          "email": "test@example.com",
+          "phone": "+7 999 123-45-67",
+          "company": "ООО Тест",
+          "position": "Менеджер",
+          "consent": true
+        }
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "step": 1
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "POST step 2 full submission",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "step": 2,
+        "data": {
+          "name": "Иван Тестов",
+          "email": "test@example.com",
+          "phone": "+7 999 123-45-67",
+          "company": "ООО Тест",
+          "position": "Менеджер",
+          "consent": true,
+          "objectType": "pool",
+          "poolSize": "25x12м",
+          "visitorsCount": "100-200",
+          "budget": "1-3m",
+          "timeline": "normal"
+        }
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "step": 2,
+        "telegram_sent": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

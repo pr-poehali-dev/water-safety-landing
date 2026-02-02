@@ -1,25 +1,9 @@
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
 import Icon from '@/components/ui/icon';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import SurveyForm from './SurveyForm';
 
 const Contacts = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: '',
-    consent: false
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-  };
-
   return (
     <section id="contacts" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,97 +19,58 @@ const Contacts = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Ваше имя *
-                  </label>
-                  <Input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Иван Иванов"
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Email *
-                  </label>
-                  <Input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="example@company.ru"
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Телефон *
-                  </label>
-                  <Input
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+7 (___) ___-__-__"
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Компания / Организация
-                  </label>
-                  <Input
-                    type="text"
-                    value={formData.company}
-                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    placeholder="ООО «Название»"
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Ваш вопрос
-                  </label>
-                  <Textarea
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Опишите ваш объект и задачу..."
-                    className="w-full min-h-32"
-                  />
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Checkbox
-                    id="consent"
-                    checked={formData.consent}
-                    onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
-                    className="mt-1"
-                  />
-                  <label htmlFor="consent" className="text-sm text-muted-foreground cursor-pointer">
-                    Даю согласие на обработку персональных данных в соответствии с{' '}
-                    <a href="#" className="text-primary hover:underline">политикой конфиденциальности</a>
-                  </label>
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-primary hover:bg-primary/90 text-white"
-                  disabled={!formData.consent}
-                >
-                  Отправить заявку
-                  <Icon name="Send" size={20} className="ml-2" />
-                </Button>
-              </form>
+              <Tabs defaultValue="survey" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 mb-6">
+                  <TabsTrigger value="survey">
+                    <Icon name="ClipboardList" size={16} className="mr-2" />
+                    Анкета-заявка
+                  </TabsTrigger>
+                  <TabsTrigger value="quick">
+                    <Icon name="MessageSquare" size={16} className="mr-2" />
+                    Быстрая связь
+                  </TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="survey" className="mt-0">
+                  <SurveyForm />
+                </TabsContent>
+                
+                <TabsContent value="quick" className="mt-0">
+                  <div className="space-y-6">
+                    <div className="bg-muted/50 p-4 rounded-lg mb-6">
+                      <p className="text-sm text-muted-foreground">
+                        Для подробной заявки используйте вкладку «Анкета-заявка»
+                      </p>
+                    </div>
+                    
+                    <div className="flex flex-col gap-4">
+                      <a 
+                        href="mailto:dimanadym@yandex.ru" 
+                        className="flex items-center gap-3 p-4 bg-card border border-border rounded-lg hover:border-primary transition-colors"
+                      >
+                        <Icon name="Mail" size={24} className="text-primary" />
+                        <div>
+                          <div className="font-semibold text-foreground">Email</div>
+                          <div className="text-sm text-muted-foreground">dimanadym@yandex.ru</div>
+                        </div>
+                      </a>
+                      
+                      <a 
+                        href="https://t.me/+Jcc9HDH1PphiMzA6" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-4 bg-card border border-border rounded-lg hover:border-primary transition-colors"
+                      >
+                        <Icon name="MessageCircle" size={24} className="text-primary" />
+                        <div>
+                          <div className="font-semibold text-foreground">Telegram</div>
+                          <div className="text-sm text-muted-foreground">Чат поддержки</div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </TabsContent>
+              </Tabs>
             </div>
 
             <div className="space-y-8">
